@@ -25,7 +25,7 @@ function App() {
         Nedenfor vises et kort med mapbox.
       </p>
       <p className="read-the-docs">
-        Der er indsat fem forskellige Københavnske seværdigheder på kortet.
+        Der er indsat fem forskellige Københavnske interessepunkter på kortet.
       </p>
     
 
