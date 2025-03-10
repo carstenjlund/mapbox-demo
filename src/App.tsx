@@ -1,6 +1,6 @@
 
 import './App.css'
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import Map, {Marker, Popup } from 'react-map-gl'
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { HiMapPin } from "react-icons/hi2";
@@ -15,7 +15,10 @@ function App() {
   }
 
     const [selectedLocation, setSelectedLocation] = useState<Location | null>(null);
-
+    useEffect(() => {
+      console.log("Selected location:", selectedLocation
+    )}, [selectedLocation]);
+  
   return (
     <>
       
@@ -44,7 +47,7 @@ function App() {
         <Marker key={location.name} longitude={location.longitude} latitude={location.latitude} anchor="bottom" >
           <button 
             onClick={() => {
-              console.log("Clicked location:", location);
+              //console.log("Clicked location:", location);
               setSelectedLocation(location)
             }} 
             style={{ background: "none", border: "none", cursor: "pointer" }}
@@ -57,7 +60,9 @@ function App() {
         <Popup
           longitude={selectedLocation.longitude}
           latitude={selectedLocation.latitude}
-          anchor="top"
+          anchor="center"
+          offset={[0, -48]}
+          closeOnClick={false}
           onClose={() => setSelectedLocation(null)}
         >
           <div>
