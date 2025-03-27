@@ -1,4 +1,3 @@
-
 import './App.css'
 import { useState,useEffect } from 'react';
 import Map, {Marker, Popup } from 'react-map-gl'
@@ -6,15 +5,15 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import { HiMapPin } from "react-icons/hi2";
 import mapLocations from './locations';
 
+type Location = {
+  name: string;
+  latitude: number;
+  longitude: number
+}
+
 function App() {
-
-  type Location = {
-    name: string;
-    latitude: number;
-    longitude: number
-  }
-
     const [selectedLocation, setSelectedLocation] = useState<Location | null>(null);
+    
     useEffect(() => {
       console.log("Selected location:", selectedLocation
     )}, [selectedLocation]);
@@ -24,14 +23,13 @@ function App() {
       
       <h1>Mapbox demo</h1>
 
-      <p className="read-the-docs">
+      <p>
         Nedenfor vises et kort med mapbox.
       </p>
-      <p className="read-the-docs">
+      <p>
         Der er indsat fem forskellige Københavnske interessepunkter på kortet.
       </p>
     
-
       <Map
       mapboxAccessToken={import.meta.env.VITE_MAPBOX }
       initialViewState={{
